@@ -1,6 +1,4 @@
 # String Calculator Kata
-Credits to [Roy Osherove](http://osherove.com/tdd-kata-1) for the original idea.
-
 The following is a TDD Kata, an exercise in coding, refactoring and test-first, that you should apply daily for at least 15-30 minutes.
 
 ## Before you start
@@ -54,3 +52,5 @@ Numbers bigger than 1000 should be ignored, so adding 2 + 1001  = 2
 **IMPORTANT:**  Implement the requirements focusing on **writing the best code** you can produce.
 
 **CODE SUBMISSION:** Add the code to your own Github account and send us the link.
+
+Credits to [Roy Osherove](http://osherove.com/tdd-kata-1) for the original idea.
