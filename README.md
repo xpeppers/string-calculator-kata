@@ -11,15 +11,15 @@ The following is a TDD Kata, an exercise in coding, refactoring and test-first, 
 ## The kata
 
 ### Step 1: the simplest thing
-Create a simple String calculator with a method ``int add(String numbers)``
+Create a simple String calculator with a method ``int add(String numbers)``.
 
 * The method can take 0, 1 or 2 numbers, and will return their sum (for an empty string it will return 0) for example ``""`` or ``"1"`` or ``"1,2"``.
-* Start with the simplest test case of an empty string and move to 1 and two numbers
-* Remember to solve things as simply as possible so that you force yourself to write tests you did not think about
-* Remember to refactor after each passing test
+* Start with the simplest test case of an empty string and move to 1 and two numbers.
+* Remember to solve things as simply as possible so that you force yourself to write tests you did not think about.
+* Remember to refactor after each passing test.
 
 ### Step 2: handle an unknown amount of numbers
-Allow the Add method to handle an unknown amount of numbers
+Allow the Add method to handle an unknown amount of numbers.
 
 ### Step 3: handle new lines between numbers
 Allow the Add method to handle new lines between numbers (instead of commas).
@@ -28,14 +28,18 @@ Allow the Add method to handle new lines between numbers (instead of commas).
 * the following input is NOT ok:  ``"1,\n"`` (not need to prove it - just clarifying)
 
 ### Step 4: support different delimiters
-Support different delimiters.
+Support different delimiters: to change a delimiter, the beginning of the string will contain a separate line that looks like this:   
 
-To change a delimiter, the beginning of the string will contain a separate line that looks like this:   ``"//[delimiter]\n[numbers...]"``
+``"//[delimiter]\n[numbers...]"``
 
-* for example “//;\n1;2” should return three where the default delimiter is ‘;’ .
-* the first line is optional. all existing scenarios should still be supported
+For example ``"//;\n1;2"`` should return 3 where the default delimiter is ``';'``.
+
+The first line is optional. all existing scenarios should still be supported.
+
 ### Step 5: negative numbers
-Calling Add with a negative number will throw an exception "negatives not allowed" - and the negative that was passed.
+Calling ``add()`` with a negative number will throw an exception ``"negatives not allowed"`` - and the negative that was passed.
+
+For example ``add("1,4,-1")`` should throw an exception with the message ``"negatives not allowed: -1"``.
 
 If there are multiple negatives, show all of them in the exception message.
 
