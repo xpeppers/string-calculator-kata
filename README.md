@@ -19,10 +19,10 @@ Create a simple String calculator with a method ``int add(String numbers)``.
 * Remember to refactor after each passing test.
 
 ### Step 2: handle an unknown amount of numbers
-Allow the Add method to handle an unknown amount of numbers.
+Allow the ``add()`` method to handle an unknown amount of numbers.
 
 ### Step 3: handle new lines between numbers
-Allow the Add method to handle new lines between numbers (instead of commas).
+Allow the ``add()`` method to handle new lines between numbers (instead of commas).
 
 * the following input is ok:  ``"1\n2,3"`` (will equal 6)
 * the following input is NOT ok:  ``"1,\n"`` (not need to prove it - just clarifying)
