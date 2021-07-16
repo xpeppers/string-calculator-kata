@@ -2,6 +2,7 @@ package com.xpeppers;
 
 public class StringCalculator {
     public int add(String input) {
-        return 0;
+        if(input.isEmpty()) input="0";
+        return Integer.parseInt(input);
     }
 }
