@@ -45,6 +45,25 @@ If there are multiple negatives, show all of them in the exception message.
 ### Step 6: ignore big numbers
 Numbers bigger than 1000 should be ignored, so adding 2 + 1001  = 2
 
+---
+
+## Part 2: interact with external systems
+
+### Add logging
+
+Add Logging Abilities to your new String Calculator (to an **`ILogger.Write()`**) interface (you will need a mock). Every time you call **`Add()`**, the sum result will be logged to the logger.
+
+When calling **`Add()`** and the logger throws an exception, the string calculator should notify an `IWebservice` of some kind that logging has failed with the message from the logger's exception (you will need a mock and a stub).
+
+### A More Difficult Variation of the Kata
+
+Create a program (test first) that uses string calculator, which the user can invoke through the terminal / console by calling **`scalc '1,2,3'`** and will output the following line before exiting: **`"The result is 6"`**.
+Note that `scalc` is the name of the app executable.
+
+Then, instead of exiting after the first result, the program will ask the user for **`"another input please"`** and print the result of the new user input out as well, until the user gives no input and just press enter (i.e. empty string): in that case it will exit.
+
+---
+
 ## General requirements
 - Use whatever language and frameworks you want. Use something that you know well.
 - Provide a README with instructions on how to compile and run the application.
