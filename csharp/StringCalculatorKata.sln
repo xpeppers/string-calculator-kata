@@ -4,6 +4,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringCalculatorKata", "Str
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringCalculatorKata.Tests", "StringCalculatorKata.Tests\StringCalculatorKata.Tests.csproj", "{D9EA4925-4F90-4EB8-92BA-EB934572730C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{88475C4D-1DD2-4FEC-BA1C-1E16F8B18E9E}"
+ProjectSection(SolutionItems) = preProject
+	..\README.md = ..\README.md
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
