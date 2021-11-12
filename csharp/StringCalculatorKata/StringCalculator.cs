@@ -4,15 +4,20 @@ namespace StringCalculatorKata
 	public static class StringCalculator
 	{
 		public static int Add(string numbers)
-		{
-			if (string.IsNullOrEmpty(numbers))
-				return 0;
+        {
+            if (string.IsNullOrEmpty(numbers))
+                return 0;
 
-			string[] addends = numbers.Split(@",");
-			if (addends.Length == 2)
-				return Convert.ToInt32(addends[0]) + Convert.ToInt32(addends[1]);
+            string[] addends = numbers.Split(@",");
+            if (addends.Length == 2)
+                return ToNumber(addends[0]) + ToNumber(addends[1]);
 
-			return Int32.Parse(numbers);
-		}
-	}
+            return ToNumber(numbers);
+        }
+
+        private static int ToNumber(string number)
+        {
+            return Int32.Parse(number);
+        }
+    }
 }
