@@ -10,5 +10,17 @@ namespace StringCalculatorKata.Tests
         {
             StringCalculator.Add("").Should().Be(0);
         }
+
+        [Fact]
+        public void ZeroEqualsZero()
+        {
+            StringCalculator.Add("0").Should().Be(0);
+        }
+
+        [Fact]
+        public void InputEqualsNumberIdentity()
+        {
+            StringCalculator.Add("1").Should().Be(1);
+        }
     }
 }
