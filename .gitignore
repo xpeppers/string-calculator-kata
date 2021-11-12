@@ -1,2 +1,4 @@
 .suo
 slnx.sqlite
+*.json
+.vs
