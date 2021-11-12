@@ -6,14 +6,18 @@ namespace StringCalculatorKata
     {
         public static int Add(string numbers)
         {
-            if (string.Empty == numbers)
+            if (numbers.Equals(string.Empty)) 
                 return 0;
 
             string[] numbersToSum = numbers.Split(",");
-            if (numbersToSum.Length == 2)
-                return int.Parse(numbersToSum[0]) + int.Parse(numbersToSum[1]);
+            int sum = 0;
 
-            return int.Parse(numbers);
+            foreach (string number in numbersToSum)
+            {
+                sum += int.Parse(number);
+            }
+
+            return sum;
         }
     }
 }

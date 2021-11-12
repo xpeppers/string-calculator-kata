@@ -29,5 +29,13 @@ namespace StringCalculatorKata.Tests
 
             res.Should().Be(3);
         }
+
+        [Fact]
+        public void ReturnsSumOfNumbers()
+        {
+            int res = StringCalculator.Add("1,2,3,4");
+
+            res.Should().Be(10);
+        }
     }
 }
