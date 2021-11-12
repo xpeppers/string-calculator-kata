@@ -25,9 +25,15 @@ namespace StringCalculatorKata.Tests
 		}
 
 		[Fact]
-		public void InputContainsTwoNumber()
+		public void InputContainsTwoNumbers()
 		{
 			StringCalculator.Add("1,2").Should().Be(3);
+		}
+
+		[Fact]
+		public void InputContainsThreeNumbers()
+		{
+			StringCalculator.Add("1,2,3").Should().Be(6);
 		}
 	}
 }

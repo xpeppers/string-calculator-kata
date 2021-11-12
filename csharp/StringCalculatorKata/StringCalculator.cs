@@ -1,18 +1,18 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 namespace StringCalculatorKata
 {
-	public static class StringCalculator
-	{
-		public static int Add(string numbers)
+    public static class StringCalculator
+    {
+        public static int Add(string numbers)
         {
             if (string.IsNullOrEmpty(numbers))
                 return 0;
 
-            string[] addends = numbers.Split(@",");
-            if (addends.Length == 2)
-                return ToNumber(addends[0]) + ToNumber(addends[1]);
-
-            return ToNumber(numbers);
+            return numbers.Split(@",").ToList()
+                          .Select(n => ToNumber(n))
+                          .Sum();
         }
 
         private static int ToNumber(string number)
