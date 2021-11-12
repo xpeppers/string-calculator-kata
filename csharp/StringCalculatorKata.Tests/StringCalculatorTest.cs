@@ -10,6 +10,7 @@ namespace StringCalculatorKata.Tests
         [InlineData("5", 5)]
         [InlineData("1,2", 3)]
         [InlineData("1,2,3,4", 10)]
+        [InlineData("1,2\n3,4", 10)]
         public void ReturnsSumOfNumbers(string numbersToSum, int sum)
         {
             int res = StringCalculator.Add(numbersToSum);

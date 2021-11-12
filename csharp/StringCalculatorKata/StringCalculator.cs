@@ -9,7 +9,9 @@ namespace StringCalculatorKata
             if (numbers.Equals(string.Empty)) 
                 return 0;
 
-            string[] numbersToSum = numbers.Split(",");
+            numbers = numbers.Replace("\n", ",");
+
+            string[] numbersToSum = numbers.Split(',');
             int sum = 0;
 
             foreach (string number in numbersToSum)
