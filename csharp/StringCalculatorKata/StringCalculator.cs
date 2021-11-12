@@ -7,8 +7,8 @@ namespace StringCalculatorKata
         {
             if (string.IsNullOrEmpty(numbers))
                 return 0;
-            else
-                return Int32.Parse(numbers);
+                
+            return Int32.Parse(numbers);
         }
     }
 }
