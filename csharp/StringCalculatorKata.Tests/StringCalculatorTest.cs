@@ -21,5 +21,13 @@ namespace StringCalculatorKata.Tests
 
             res.Should().Be(5);
         }
+
+        [Fact]
+        public void ReturnsSumOfNumberIfTwoNumbers()
+        {
+            int res = StringCalculator.Add("1,2");
+
+            res.Should().Be(3);
+        }
     }
 }
