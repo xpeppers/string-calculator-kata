@@ -35,5 +35,11 @@ namespace StringCalculatorKata.Tests
 		{
 			StringCalculator.Add("1,2,3").Should().Be(6);
 		}
+
+		[Fact]
+		public void InputContainsNumbersWithCarriageReturn()
+		{
+			StringCalculator.Add("1\n2,3").Should().Be(6);
+		}
 	}
 }

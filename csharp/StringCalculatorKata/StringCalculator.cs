@@ -9,7 +9,7 @@ namespace StringCalculatorKata
             if (string.IsNullOrEmpty(numbers))
                 return 0;
 
-            return numbers.Split(@",").ToList()
+            return numbers.Split(',', '\n').ToList()
                           .Select(n => ToNumber(n))
                           .Sum();
         }
