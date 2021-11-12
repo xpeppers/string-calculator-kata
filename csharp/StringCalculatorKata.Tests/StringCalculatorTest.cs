@@ -10,5 +10,13 @@ namespace StringCalculatorKata.Tests
         {
             true.Should().Be(false);
         }
+
+        [Fact]
+        public void Test0()
+        {
+            int res = StringCalculator.Add(string.Empty);
+
+            res.Should().Be(0);
+        }
     }
 }
