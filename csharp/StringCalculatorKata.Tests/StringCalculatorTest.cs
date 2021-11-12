@@ -6,9 +6,9 @@ namespace StringCalculatorKata.Tests
     public class StringCalculatorTest
     {
         [Fact]
-        public void ExampleTest()
+        public void EmptyStringEqualsZero()
         {
-            true.Should().Be(false);
+            StringCalculator.Add("").Should().Be(0);
         }
     }
 }
