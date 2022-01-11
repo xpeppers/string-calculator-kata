@@ -23,6 +23,11 @@ public class CalculatorTest {
         int result = Calculator.add("1,2");
         assertEquals(3, result);
     }
+    @Test
+    public void sumNnumbers(){
+        int result = Calculator.add("1,2,45,87");
+        assertEquals(135, result);
+    }
 
 
 
