@@ -1,5 +1,6 @@
 #TODO list
 
 - Verificare che stringa vuota dia 0 --> Fatto
+- Verificare il comportamento con un solo numero --> Fatto
 - Verificare che la somma di due numeri sia corretta --> Fatto
 
