@@ -11,10 +11,10 @@ private static final String NUMBER_SEPARATOR=",";
         return sumNumbers(number);
     }
 
-    private static Integer sumNumbers(String[] number) {
+    private static Integer sumNumbers(String[] numbers) {
         Integer result = 0;
-        for (int i = 0; i< number.length; i++){
-            result = result + Integer.valueOf(number[i]);
+        for (String number : numbers) {
+            result += Integer.parseInt(number);
         }
         return result;
     }
