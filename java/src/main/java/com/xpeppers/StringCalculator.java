@@ -8,22 +8,23 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    public static int add(String stringOfNumbers) throws Exception {
-        if (stringOfNumbers.isEmpty())
-            return 0;
+	public
+	int add(String stringOfNumbers) throws Exception {
+	    if (stringOfNumbers.isEmpty())
+	        return 0;
 
-        String[] addends = split(stringOfNumbers);
+	    String[] addends = split(stringOfNumbers);
 
-        List<Integer> numbers = toIntegers(addends);
+	    List<Integer> numbers = toIntegers(addends);
 
-        List<Integer> negatives = negativesFrom(numbers);
-        if (!negatives.isEmpty())
-            throw new Exception("Negatives not allowed: " + join(negatives));
+	    List<Integer> negatives = negativesFrom(numbers);
+	    if (!negatives.isEmpty())
+	        throw new Exception("Negatives not allowed: " + join(negatives));
 
-        return sum(numbers);
-    }
+	    return sum(numbers);
+	}
 
-    private static String[] split(String stringOfNumbers) {
+	private static String[] split(String stringOfNumbers) {
         Pattern pattern = Pattern.compile("//(.+?)\n(.+)");
         Matcher matcher = pattern.matcher(stringOfNumbers);
 
