@@ -6,9 +6,12 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -17,11 +20,14 @@ public class StringCalculatorTest {
 	@Mock
 	CustomLogger logger;
 
+	@Mock
+    CustomWebService webService;
+
 	StringCalculator stringCalculator;
 
 	@Before
 	public void init() {
-		this.stringCalculator = new StringCalculator(logger);
+		this.stringCalculator = new StringCalculator(logger, webService);
 	}
 
     @Rule
@@ -86,5 +92,13 @@ public class StringCalculatorTest {
 		stringCalculator.add("1,2");
 		verify(logger).write("The result is 3");
 	}
+	@Test()
+	public void loggerFailNotifyException() throws Exception {
+        doThrow(IllegalStateException.class)
+                .when(logger)
+                .write(anyString());
+        stringCalculator.add("1,2");
+        verify(webService).notifyException("CustomLogger Fail");
+    }
 
 }

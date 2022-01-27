@@ -9,11 +9,14 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 
 	private CustomLogger logger;
+	private CustomWebService webService;
 
 	public
-	StringCalculator(CustomLogger logger)
+	StringCalculator(CustomLogger logger, CustomWebService webService)
 	{
 		this.logger = logger;
+		this.webService = webService;
+
 	}
 
 	public
@@ -31,7 +34,12 @@ public class StringCalculator {
 
 		int sum = sum(numbers);
 
-		logger.write("The result is " + sum);
+		try {
+            logger.write("The result is " + sum);
+        }catch(Exception e){
+            webService.notifyException("CustomLogger Fail");
+        }
+
 
 	    return sum;
 	}
