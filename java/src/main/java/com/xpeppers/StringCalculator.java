@@ -8,6 +8,14 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
+	private CustomLogger logger;
+
+	public
+	StringCalculator(CustomLogger logger)
+	{
+		this.logger = logger;
+	}
+
 	public
 	int add(String stringOfNumbers) throws Exception {
 	    if (stringOfNumbers.isEmpty())
@@ -21,7 +29,11 @@ public class StringCalculator {
 	    if (!negatives.isEmpty())
 	        throw new Exception("Negatives not allowed: " + join(negatives));
 
-	    return sum(numbers);
+		int sum = sum(numbers);
+
+		logger.write("The result is " + sum);
+
+	    return sum;
 	}
 
 	private static String[] split(String stringOfNumbers) {
