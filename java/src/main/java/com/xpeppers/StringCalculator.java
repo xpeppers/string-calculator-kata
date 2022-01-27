@@ -29,16 +29,22 @@ public class StringCalculator {
             throw new Exception("Negatives not allowed: " + join(negatives));
 
 	    final int result = sum(numbers);
+	    logResult(result);
+	    return result;
+    }
+
+	private
+	void logResult(int result)
+	{
 		try
 		{
 			this.logger.write(result);
 		}catch (RuntimeException e){
 			this.iWebservice.notifyError(e.getMessage());
 		}
-	    return result;
-    }
+	}
 
-    private static String[] split(String stringOfNumbers) {
+	private static String[] split(String stringOfNumbers) {
         Pattern pattern = Pattern.compile("//(.+?)\n(.+)");
         Matcher matcher = pattern.matcher(stringOfNumbers);
 

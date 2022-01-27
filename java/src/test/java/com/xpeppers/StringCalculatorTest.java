@@ -91,10 +91,11 @@ public class StringCalculatorTest {
 
 	@Test
 	public void notifyIwebserviceWhenError() throws Exception{
-		FakeExceptionLogger fakeLogger = new FakeExceptionLogger();
+		final String errorMessage = "Errore di scrittura";
+		FakeExceptionLogger fakeLogger = new FakeExceptionLogger(errorMessage);
 		FakeIWebservice fakeIWebservice = new FakeIWebservice();
 		returnSum("1,2,3", fakeLogger, fakeIWebservice);
 
-		assertEquals("Errore di scrittura", fakeIWebservice.getErrorMessage());
+		assertEquals(errorMessage, fakeIWebservice.getErrorMessage());
 	}
 }
