@@ -13,53 +13,69 @@ public class StringCalculatorTest {
 
     @Test
     public void addingEmptyStringReturnsZero() throws Exception {
-        assertEquals(0, StringCalculator.add(""));
+        assertEquals(0, returnSum(""));
     }
 
     @Test
     public void addingStringNumberReturnsNumber() throws Exception {
-        assertEquals(1, StringCalculator.add("1"));
+        assertEquals(1, returnSum("1"));
     }
 
     @Test
     public void addingStringNumbersReturnsSum() throws Exception {
-        assertEquals(7, StringCalculator.add("1,2,4"));
+        assertEquals(7, returnSum("1,2,4"));
     }
 
     @Test
     public void addingStringNumbersWithDelimitersReturnsSum() throws Exception {
-        assertEquals(7, StringCalculator.add("1\n2,4"));
+        assertEquals(7, returnSum("1\n2,4"));
     }
 
     @Test
     public void addingStringNumbersWithCustomDelimiterReturnsSum() throws Exception {
-        assertEquals(3, StringCalculator.add("//;\n1;2"));
+        assertEquals(3, returnSum("//;\n1;2"));
     }
 
     @Test
     public void addingStringNumbersWithCustomDelimiterOfVariableLengthReturnsSum() throws Exception {
-        assertEquals(6, StringCalculator.add("//[***]\n1***2***3"));
+        assertEquals(6, returnSum("//[***]\n1***2***3"));
     }
 
     @Test
     public void addingNegativeNumbersThrowsException() throws Exception {
         expectedException.expect(Exception.class);
         expectedException.expectMessage("Negatives not allowed: -1, -2");
-        StringCalculator.add("-1,1,-2");
+        returnSum("-1,1,-2");
     }
 
     @Test
     public void numberOverThousandAreIgnored() throws Exception {
-        assertEquals(3, StringCalculator.add("1,1001,2"));
+        assertEquals(3, returnSum("1,1001,2"));
     }
 
     @Test
     public void addingStringNumbersWithMultipleCustomDelimiterReturnsSum() throws Exception {
-        assertEquals(6, StringCalculator.add("//[%][*]\n1*2%3"));
+        assertEquals(6, returnSum("//[%][*]\n1*2%3"));
     }
 
     @Test
     public void addingStringNumbersWithMultipleCustomDelimiterWithVariableLengthReturnsSum() throws Exception {
-        assertEquals(6, StringCalculator.add("//[%%][****]\n1****2%%3"));
+        assertEquals(6, returnSum("//[%%][****]\n1****2%%3"));
     }
+
+	private
+	int returnSum(String textInput)
+	throws Exception
+	{
+		return StringCalculator.add(textInput);
+	}
+
+	@Test
+	public void logSum()
+	throws Exception
+	{
+		FakeLogger fakeLogger = new FakeLogger();
+		fakeLogger.write(returnSum("1,2,3"));
+		assertEquals(6, fakeLogger.getValue());
+	}
 }

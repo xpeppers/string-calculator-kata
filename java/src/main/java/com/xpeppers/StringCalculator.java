@@ -8,6 +8,8 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
+	public ILogger logger;
+
     public static int add(String stringOfNumbers) throws Exception {
         if (stringOfNumbers.isEmpty())
             return 0;
