@@ -9,9 +9,11 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 
 	ILogger logger;
+	IWebservice iWebservice;
 
-	public StringCalculator(ILogger logger){
+	public StringCalculator(ILogger logger, IWebservice iWebservice){
 		this.logger = logger;
+		this.iWebservice = iWebservice;
 	}
 
     public int add(String stringOfNumbers) throws Exception {
@@ -27,7 +29,12 @@ public class StringCalculator {
             throw new Exception("Negatives not allowed: " + join(negatives));
 
 	    final int result = sum(numbers);
-	    this.logger.write(result);
+		try
+		{
+			this.logger.write(result);
+		}catch (RuntimeException e){
+			this.iWebservice.notifyError(e.getMessage());
+		}
 	    return result;
     }
 
