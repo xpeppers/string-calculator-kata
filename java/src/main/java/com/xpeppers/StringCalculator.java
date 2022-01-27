@@ -8,7 +8,13 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    public static int add(String stringOfNumbers, ILogger logger) throws Exception {
+	ILogger logger;
+
+	public StringCalculator(ILogger logger){
+		this.logger = logger;
+	}
+
+    public int add(String stringOfNumbers) throws Exception {
         if (stringOfNumbers.isEmpty())
             return 0;
 
@@ -21,7 +27,7 @@ public class StringCalculator {
             throw new Exception("Negatives not allowed: " + join(negatives));
 
 	    final int result = sum(numbers);
-	    logger.write(result);
+	    this.logger.write(result);
 	    return result;
     }
 

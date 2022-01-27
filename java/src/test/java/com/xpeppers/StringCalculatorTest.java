@@ -68,7 +68,8 @@ public class StringCalculatorTest {
 	throws Exception
 	{
 		FakeLogger fakeLogger = new FakeLogger();
-		return StringCalculator.add(textInput, fakeLogger);
+		StringCalculator stringCalculator = new StringCalculator(fakeLogger);
+		return stringCalculator.add(textInput);
 	}
 
 	@Test
@@ -76,7 +77,8 @@ public class StringCalculatorTest {
 	throws Exception
 	{
 		FakeLogger fakeLogger = new FakeLogger();
-		StringCalculator.add("1,2,3", fakeLogger);
+		StringCalculator stringCalculator = new StringCalculator(fakeLogger);
+		stringCalculator.add("1,2,3");
 		assertEquals(6, fakeLogger.getValue());
 	}
 }
