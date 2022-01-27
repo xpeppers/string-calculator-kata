@@ -67,7 +67,8 @@ public class StringCalculatorTest {
 	int returnSum(String textInput)
 	throws Exception
 	{
-		return StringCalculator.add(textInput);
+		FakeLogger fakeLogger = new FakeLogger();
+		return StringCalculator.add(textInput, fakeLogger);
 	}
 
 	@Test
@@ -75,7 +76,7 @@ public class StringCalculatorTest {
 	throws Exception
 	{
 		FakeLogger fakeLogger = new FakeLogger();
-		fakeLogger.write(returnSum("1,2,3"));
+		StringCalculator.add("1,2,3", fakeLogger);
 		assertEquals(6, fakeLogger.getValue());
 	}
 }
