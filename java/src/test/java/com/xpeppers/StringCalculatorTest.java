@@ -67,11 +67,17 @@ public class StringCalculatorTest {
 	int returnSum(String textInput)
 	throws Exception
 	{
-		FakeLogger fakeLogger = new FakeLogger();
-		FakeIWebservice fakeIWebservice = new FakeIWebservice();
+		return returnSum(textInput, new FakeLogger(), new FakeIWebservice());
+	}
+
+	private
+	int returnSum(String textInput, final ILogger fakeLogger, final IWebservice fakeIWebservice)
+	throws Exception
+	{
 		StringCalculator stringCalculator = new StringCalculator(fakeLogger, fakeIWebservice);
 		return stringCalculator.add(textInput);
 	}
+
 
 	@Test
 	public void logSum()
@@ -79,17 +85,15 @@ public class StringCalculatorTest {
 	{
 		FakeLogger fakeLogger = new FakeLogger();
 		FakeIWebservice fakeIWebservice = new FakeIWebservice();
-		StringCalculator stringCalculator = new StringCalculator(fakeLogger, fakeIWebservice);
-		stringCalculator.add("1,2,3");
+		returnSum("1,2,3", fakeLogger, fakeIWebservice);
 		assertEquals(6, fakeLogger.getValue());
 	}
 
 	@Test
-	public void notificaIwebservice() throws Exception{
+	public void notifyIwebserviceWhenError() throws Exception{
 		FakeExceptionLogger fakeLogger = new FakeExceptionLogger();
 		FakeIWebservice fakeIWebservice = new FakeIWebservice();
-		StringCalculator stringCalculator = new StringCalculator(fakeLogger, fakeIWebservice);
-		stringCalculator.add("1,2,3");
+		returnSum("1,2,3", fakeLogger, fakeIWebservice);
 
 		assertEquals("Errore di scrittura", fakeIWebservice.getErrorMessage());
 	}
