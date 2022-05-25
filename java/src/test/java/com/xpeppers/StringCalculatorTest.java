@@ -23,4 +23,13 @@ public class StringCalculatorTest {
         Assert.assertEquals(1, output);
     }
 
+    @Test
+    public void return3LikeResult() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        int output = stringCalculator.add("1,2");
+
+        Assert.assertEquals(3, output);
+    }
+
 }
