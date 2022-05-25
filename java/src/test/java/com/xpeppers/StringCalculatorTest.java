@@ -41,6 +41,15 @@ public class StringCalculatorTest {
         Assert.assertEquals(5, output);
     }
 
+    @Test
+    public void handleNewline() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        int output = stringCalculator.add("1\n2,3");
+
+        Assert.assertEquals(6, output);
+    }
+
 
 
 }

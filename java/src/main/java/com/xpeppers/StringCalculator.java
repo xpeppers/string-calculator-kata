@@ -7,7 +7,7 @@ public class StringCalculator {
         if ("".equals(input))
             return 0;
 
-        String[] numeri = input.split(",");
+        String[] numeri = input.split("\\n|,");
 
         int result = 0;
 
