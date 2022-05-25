@@ -39,4 +39,10 @@ public class StringCalculatorTest {
 
         Assert.assertEquals(result, 6);
     }
+    @Test
+    public void should_return_sum_of_variabile_number_of_inputs_with_parametric_delimiter() {
+        int result = stringCalculator.add("//;\n1;2");
+
+        Assert.assertEquals(result, 3);
+    }
 }
