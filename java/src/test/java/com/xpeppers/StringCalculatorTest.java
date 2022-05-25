@@ -32,4 +32,15 @@ public class StringCalculatorTest {
         Assert.assertEquals(3, output);
     }
 
+    @Test
+    public void moreThanTwoInput() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        int output = stringCalculator.add("1,1,1,1,1");
+
+        Assert.assertEquals(5, output);
+    }
+
+
+
 }
