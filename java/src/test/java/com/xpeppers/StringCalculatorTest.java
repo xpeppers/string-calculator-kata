@@ -14,4 +14,13 @@ public class StringCalculatorTest {
         Assert.assertEquals(0, output);
     }
 
+    @Test
+    public void return1LikeResult() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        int output = stringCalculator.add("1");
+
+        Assert.assertEquals(1, output);
+    }
+
 }
