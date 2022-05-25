@@ -3,6 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class StringCalculatorTest {
+
     private final StringCalculator stringCalculator=new StringCalculator();
 
     @Test
@@ -23,5 +24,15 @@ public class StringCalculatorTest {
     @Test
     public void string_with_3_parameters_return_sum_of_them(){
         assertEquals(6, stringCalculator.add("1,2,3"));
+    }
+
+    @Test
+    public void string_with_new_line_as_separator(){
+        assertEquals(6, stringCalculator.add("1\n2,3"));
+    }
+
+    @Test
+    public void xxx(){
+        assertEquals(3, stringCalculator.add("//;\n1;2"));
     }
 }

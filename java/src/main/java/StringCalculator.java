@@ -1,19 +1,19 @@
-import com.sun.deploy.util.StringUtils;
-
-import static java.lang.Integer.parseInt;
+import static com.sun.deploy.util.StringUtils.splitString;
+import static java.util.Arrays.stream;
 
 public class StringCalculator {
 
     public static final String EMPTY_STRING = "";
 
     public int add(String input) {
-        if(input.equals(EMPTY_STRING))
+        if (input.equals(EMPTY_STRING))
             return 0;
-        String[] lista = StringUtils.splitString(input, ",");
-        int sum=0;
-        for(String elem: lista){
-            sum+=parseInt(elem);
+        String delimiter=",";
+        if(input.startsWith("//")) {
+            delimiter = input.substring(2, 3);
+            input=input.substring(4);
         }
-        return sum;
+        String[] lista = splitString(input.replace("\n", ","), delimiter);
+        return stream(lista).mapToInt(Integer::parseInt).sum();
     }
 }
