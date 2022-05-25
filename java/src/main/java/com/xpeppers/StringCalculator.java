@@ -23,9 +23,13 @@ public class StringCalculator {
         String delimiter = COMMA;
         if(numbers.contains(DOUBLE_SLASH)){
             delimiter = getCustomDelimiter(numbers);
-            numbers = numbers.substring(numbers.indexOf('\n')+1);
+            numbers = stripDelimiterSpec(numbers);
         }
         return numbers.replaceAll(NEW_LINE, delimiter).split(delimiter);
+    }
+
+    private String stripDelimiterSpec(String numbers) {
+        return numbers.substring(numbers.indexOf('\n') + 1);
     }
 
     private String getCustomDelimiter(String numbers) {
