@@ -11,19 +11,26 @@ public class StringCalculator {
         if (input.equals(EMPTY_STRING))
             return 0;
         int sum = calculateSum(input);
-        if (negatives.isEmpty())
-            return sum;
-        throw new NumberFormatException("negatives not allowed:" + negatives);
+        throwIfNegativesWereFound();
+        return sum;
+    }
+
+    private void throwIfNegativesWereFound() {
+        if (!negatives.isEmpty()) {
+            throw new NumberFormatException("negatives not allowed:" + negatives);
+        }
     }
 
     private int calculateSum(String input) {
-        input = parse(input);
-        String[] lista = splitString(input.replace("\n", ","), DELIMITER);
-        return stream(lista)
+        return stream(split(parse(input)))
                 .mapToInt(Integer::parseInt)
                 .filter(s -> s <= 1000)
                 .map(this::appendIfNegative)
                 .sum();
+    }
+
+    private String[] split(String input) {
+        return splitString(input.replace("\n", ","), DELIMITER);
     }
 
     private int appendIfNegative(int s) {
