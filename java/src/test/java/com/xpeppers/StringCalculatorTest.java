@@ -50,6 +50,14 @@ public class StringCalculatorTest {
         Assert.assertEquals(6, output);
     }
 
+    @Test
+    public void handleSpecialCharacterThatIsNotDelimiter() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        int output = stringCalculator.add("//;\n1;2");
+
+        Assert.assertEquals(3, output);
+    }
 
 
 }
