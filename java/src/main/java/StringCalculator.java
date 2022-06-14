@@ -6,27 +6,33 @@ public class StringCalculator {
     private static final String EMPTY_STRING = "";
     private String DELIMITER = ",";
     private String negatives = EMPTY_STRING;
+    private final ILogger iLogger;
+
+    public StringCalculator(ILogger iLogger) {
+        this.iLogger = iLogger;
+    }
 
     public int add(String input) {
-        if (input.equals(EMPTY_STRING))
-            return 0;
         int sum = calculateSum(input);
         throwIfNegativesWereFound();
+        iLogger.log(sum);
         return sum;
+    }
+
+    private int calculateSum(String input) {
+        if (input.equals(EMPTY_STRING))
+            return 0;
+        return stream(split(parse(input)))
+                .mapToInt(Integer::parseInt)
+                .filter(s -> s <= 1000)
+                .map(this::appendIfNegative)
+                .sum();
     }
 
     private void throwIfNegativesWereFound() {
         if (!negatives.isEmpty()) {
             throw new NumberFormatException("negatives not allowed:" + negatives);
         }
-    }
-
-    private int calculateSum(String input) {
-        return stream(split(parse(input)))
-                .mapToInt(Integer::parseInt)
-                .filter(s -> s <= 1000)
-                .map(this::appendIfNegative)
-                .sum();
     }
 
     private String[] split(String input) {

@@ -2,10 +2,14 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class StringCalculatorTest {
 
-    private final StringCalculator stringCalculator = new StringCalculator();
+    private final ILogger iLogger=mock(ILogger.class);
+
+    private final StringCalculator stringCalculator = new StringCalculator(iLogger);
 
     @Test
     public void empty_string_return_0() {
@@ -59,5 +63,17 @@ public class StringCalculatorTest {
     @Test
     public void should_not_ignore_1000() {
         assertEquals(1002, stringCalculator.add("//;\n1000;2"));
+    }
+
+    @Test
+    public void should_log() {
+        int somma = stringCalculator.add("1,2");
+        verify(iLogger).log(somma);
+    }
+
+    @Test
+    public void should_log_also_with_empty_string() {
+        int somma = stringCalculator.add("");
+        verify(iLogger).log(somma);
     }
 }
