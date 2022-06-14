@@ -59,5 +59,13 @@ public class StringCalculatorTest {
         Assert.assertEquals(3, output);
     }
 
+    @Test
+    public void throwExceptionIfNegativeNumbers() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        Assert.assertThrows("negatives not allowed: -1", NumberFormatException.class, () -> {
+            stringCalculator.add("1,4,-1");
+        });
+    }
 
 }
