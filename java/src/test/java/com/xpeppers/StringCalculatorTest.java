@@ -81,4 +81,13 @@ public class StringCalculatorTest {
 
     }
 
+    @Test
+    public void return1WithBigNumber() {
+        StringCalculator stringCalculator = new StringCalculator();
+
+        int output = stringCalculator.add("1,1001");
+
+        Assert.assertEquals(1, output);
+    }
+
 }
