@@ -4,6 +4,7 @@ import static java.util.Arrays.stream;
 public class StringCalculator {
 
     private static final String EMPTY_STRING = "";
+    private static final int MAX_VALUE = 1000;
     private String DELIMITER = ",";
     private String negatives = EMPTY_STRING;
     private final ILogger iLogger;
@@ -24,7 +25,7 @@ public class StringCalculator {
             return 0;
         return stream(split(parse(input)))
                 .mapToInt(Integer::parseInt)
-                .filter(s -> s <= 1000)
+                .filter(s -> s <= MAX_VALUE)
                 .map(this::appendIfNegative)
                 .sum();
     }
