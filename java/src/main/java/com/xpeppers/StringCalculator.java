@@ -2,18 +2,26 @@ package com.xpeppers;
 
 import static java.util.Arrays.*;
 
+
 public class StringCalculator {
 
     public static final String COMMA = ",";
     public static final String NEW_LINE = "\n";
     public static final String EMPTY = "";
     public static final String DOUBLE_SLASH = "//";
+    private final NegativeNumbersGuard negativeNumbersGuard;
+
+    public StringCalculator(NegativeNumbersGuard negativeNumbersGuard) {
+        this.negativeNumbersGuard = negativeNumbersGuard;
+    }
 
     public int add(String numbers) {
         if (numbers.equals(EMPTY)) {
             return 0;
         }
-        return stream(createArrayOfNumbers(numbers))
+        String[] arrayOfNumbers = createArrayOfNumbers(numbers);
+        negativeNumbersGuard.checkNegativeNumbers(arrayOfNumbers);
+        return stream(arrayOfNumbers)
                 .map(Integer::parseInt)
                 .mapToInt(Integer::intValue)
                 .sum();

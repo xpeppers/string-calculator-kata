@@ -1,11 +1,17 @@
 package com.xpeppers;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class StringCalculatorTest {
 
-    private final StringCalculator stringCalculator = new StringCalculator();
+    private StringCalculator stringCalculator;
+
+    @Before
+    public void init() {
+        stringCalculator = new StringCalculator(new NegativeNumbersGuard());
+    }
 
     @Test
     public void should_return_0_when_empty_string() {
@@ -44,5 +50,11 @@ public class StringCalculatorTest {
         int result = stringCalculator.add("//;\n1;2");
 
         Assert.assertEquals(result, 3);
+    }
+
+    @Test
+    public void should_throw_negative_numbers_exception_when_adding_negative_number() {
+        NegativeNumberException exception = Assert.assertThrows(NegativeNumberException.class, () -> stringCalculator.add("1,4,-1"));
+        Assert.assertEquals("negatives not allowed: -1", exception.getMessage());
     }
 }
