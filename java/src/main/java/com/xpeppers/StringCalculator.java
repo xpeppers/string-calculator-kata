@@ -17,18 +17,26 @@ public class StringCalculator {
         }
 
         String[] numeri = input.split(DEFAULT_DELIMITER + delimiter);
-
+        String numeriNegativi="";
         for (String numero : numeri) {
             int number = Integer.parseInt(numero);
             if (number < 0) {
-                throw new NumberFormatException("negatives not allowed: " + number);
+                numeriNegativi += number+",";
             }
         }
+
+        lanciaEccezioneSeEsistonoNumeriNegativi(numeriNegativi);
+
         int result = 0;
 
         for (String s : numeri) result += Integer.parseInt(s);
 
         return result;
+    }
+
+    private void lanciaEccezioneSeEsistonoNumeriNegativi(String numeriNegativi) {
+        if (!"".equals(numeriNegativi))
+            throw new NumberFormatException("negatives not allowed: " + numeriNegativi.substring(0, numeriNegativi.length()-1));
     }
 
     private String getNumbersToSplit(String input) {
