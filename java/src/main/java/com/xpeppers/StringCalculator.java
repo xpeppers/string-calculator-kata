@@ -2,16 +2,14 @@ package com.xpeppers;
 
 public class StringCalculator {
 
-    public int add(String input, String delimiter) {
-        int result = 0;
+    public int add(String input) {
 
         if ("".equals(input))
-            return result;
+            return 0;
 
+        String[] numeri = input.split("\\n|,");
 
-        input = input.replaceAll("//", "");
-        String[] numeri = input.split("\\n|" + delimiter);
-
+        int result = 0;
 
         for (String s : numeri) result += Integer.parseInt(s);
 
